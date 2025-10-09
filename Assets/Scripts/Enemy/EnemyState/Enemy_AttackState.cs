@@ -10,7 +10,6 @@ public class Enemy_AttackState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        //enemy.SetVelocity(0, 0);
     }
     public override void Update()
     {
@@ -18,8 +17,6 @@ public class Enemy_AttackState : EnemyState
 
         if (isTriggerCalled)
             stateMachine.ChangeState(enemy.battleState);
-        // if (enemy.isWall && !enemy.DetectPlayer())
-        //     stateMachine.ChangeState(enemy.battleState);
         
     }
 }

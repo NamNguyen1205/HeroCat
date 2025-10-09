@@ -20,15 +20,18 @@ public class Player_InAirState : PlayerState
         // Handle horizontal movement while in the air
         if (player.movement.x != 0)
             player.SetVelocity(player.movement.x * player.jumpMoveSpeed, rb.linearVelocityY);
-            
+
         if (player.input.Player.Jump.WasPressedThisFrame() && player.canDoubleJump) // Double jump
         {
             player.canDoubleJump = false;
             stateMachine.ChangeState(player.jumpState);
         }
-       
+
         if (player.isWall && !player.canJumpNextToWall)
             stateMachine.ChangeState(player.wallSlideState);
+
+        if (player.input.Player.BasicAttack.WasPressedThisFrame())
+            stateMachine.ChangeState(player.jumpAttackState);
         
     }
 

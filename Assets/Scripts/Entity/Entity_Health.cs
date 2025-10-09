@@ -1,10 +1,12 @@
+using System.Collections;
 using UnityEngine;
 
 public class Entity_Health : MonoBehaviour, IDamageable
 {
     private Entity_VFX vfx;
-    private Entity entity;
-    [SerializeField] private float maxHealth = 100f;
+    protected Entity entity;
+    protected Entity_Stat entityStat;
+    // [SerializeField] private float maxHealth;
     [SerializeField] private float currentHealth;
     [Header("KnockBack Details")]
     [SerializeField] private Vector2 knockBackPower = new Vector2(1.5f, 1.5f);
@@ -14,28 +16,34 @@ public class Entity_Health : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        currentHealth = maxHealth;
         vfx = GetComponent<Entity_VFX>();
         entity = GetComponent<Entity>();
-    }
+        entityStat = GetComponent<Entity_Stat>();
+        currentHealth = entityStat.GetMaxHealth();
 
-    public void TakeDamage(float damage, Transform damageDealer)
+    }
+    //tranform là của entity gây sát thương
+    public bool TakeDamage(float damage, Transform damageDealer)
     {
-        if (currentHealth <= 0)
-            return;
 
         Vector2 knockbackVelocity = CalculateKnockBack(damage, damageDealer);
         float knockbackDuration = CheckKnockBackDuration(damage);
-        Debug.Log($"{damageDealer.name}: x: {knockbackVelocity.x}, y: {knockbackVelocity.y}, duration: {knockbackDuration}");
 
-        currentHealth -= damage;
+
         vfx?.PlayOnTakeDamageVfx();
+        vfx.CreateOnHitVfxPrefab();
+        
         entity?.PerformKnockBack(knockbackVelocity, knockbackDuration);
+
+        ReduceHp(damage);
+
+
+        return true;
     }
 
 
     //if damage >= 35% maxhealth => heavyKnockback
-    private bool CheckDamageKnockBack(float damage) => damage / maxHealth >= 0.3f;
+    private bool CheckDamageKnockBack(float damage) => damage / entityStat.GetMaxHealth() >= 0.3f;
     private float CheckKnockBackDuration(float damage) => CheckDamageKnockBack(damage) ? heavyKnockbackDuration : knockbackDuration;
 
     //Calculate knockback direction and heavy knockbakc or light knockback
@@ -50,5 +58,26 @@ public class Entity_Health : MonoBehaviour, IDamageable
         return knockbackVelocity;
     }
 
+    private void ReduceHp(float damage)
+    {
+        currentHealth -= damage;
 
+        if (currentHealth <= 0)
+        {
+            Die();
+            return;
+        }
+    }
+
+    private void Die()
+    {
+        entity.isDead = true;
+        entity.EntityDeath();
+    }
+
+    //UI health bar 
+    public float GetMaxHealth() => entityStat.GetMaxHealth();
+    public float GetCurrentHealth() => currentHealth;
+
+    
 }

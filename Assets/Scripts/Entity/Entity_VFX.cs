@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public class Entity_VFX : MonoBehaviour
     private Material originalMaterial;
     private Coroutine vfxTakeDamageCo;
     [SerializeField] private float vfxTakeDamageDuration = 0.2f;
+    [SerializeField] private GameObject onHitVfx;
+    [SerializeField] private Color onHitVfxColor;
     private void Awake()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
@@ -30,5 +33,11 @@ public class Entity_VFX : MonoBehaviour
         sr.material = onDamageMaterial;
         yield return new WaitForSeconds(vfxTakeDamageDuration);
         sr.material = originalMaterial;
+    }
+
+    public void CreateOnHitVfxPrefab()
+    {
+        GameObject onHitvfx = Instantiate(onHitVfx, transform.position, quaternion.identity);
+        onHitvfx.GetComponentInChildren<SpriteRenderer>().color = onHitVfxColor;
     }
 }

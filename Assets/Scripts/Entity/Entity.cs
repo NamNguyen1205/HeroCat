@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -11,10 +12,11 @@ public class Entity : MonoBehaviour
 
     [Header("Movement Details")]
     public float moveSpeed = 5;
-    protected bool isFacingRight = true;
+    public bool isFacingRight = true;
     public float facingDirection => isFacingRight ? 1 : -1;
     [Header("Attack Details")]
     public Vector2[] attackVelocities;
+    public bool isDead = false;
     [Header("KnockBack Details")]
     private Coroutine knockbackCo;
     public bool isKnockBack = false;
@@ -30,6 +32,8 @@ public class Entity : MonoBehaviour
     [SerializeField] protected LayerMask whatIsWall;
     [SerializeField] protected float wallCheckDis = 0.2f;
     public bool isWall;
+
+    public event Action OnFlipping;
 
     protected virtual void Awake()
     {
@@ -53,6 +57,11 @@ public class Entity : MonoBehaviour
     {
         HandleColliderDetect();
         stateMachine.UpdateActiveState();
+    }
+
+    public virtual void EntityDeath()
+    {
+
     }
 
     public void PerformKnockBack(Vector2 knockbackPower, float knockbackDuration)
@@ -99,6 +108,7 @@ public class Entity : MonoBehaviour
     {
         transform.Rotate(0, 180, 0);
         isFacingRight = !isFacingRight;
+        OnFlipping?.Invoke();
     }
     
     protected virtual void OnDrawGizmos()

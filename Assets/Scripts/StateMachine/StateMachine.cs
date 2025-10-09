@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class StateMachine
 {
+    private bool canChangeState = true;
     public EntityState currentState { get; private set; }
 
     public void Initialize(EntityState startState)
@@ -12,6 +13,9 @@ public class StateMachine
 
     public void ChangeState(EntityState newState)
     {
+        if (!canChangeState)
+            return;
+
         currentState.Exit();
         currentState = newState;
         currentState.Enter();
@@ -21,4 +25,6 @@ public class StateMachine
     {
         currentState.Update();
     }
+
+    public void CanNotChangeState() => canChangeState = false;
 }

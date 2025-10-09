@@ -12,6 +12,7 @@ public class Enemy_KnockBackState : EnemyState
 
         if (!enemy.isKnockBack)
             stateMachine.ChangeState(enemy.battleState);
+        
     }
 
 }

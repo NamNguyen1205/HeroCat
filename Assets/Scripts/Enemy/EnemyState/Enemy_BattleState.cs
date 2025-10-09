@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -17,29 +18,32 @@ public class Enemy_BattleState : EnemyState
 
         player ??= enemy.DetectPlayer().transform;
 
+        if(player != null)
+            MoveAwayFromPlayer();
     }
 
     public override void Update()
     {
         base.Update();
+        if(player != null)
+            MoveAwayFromPlayer();
 
         if (enemy.DetectPlayer())
             lastTimeDetectedPlayer = Time.time;
         anim.SetFloat("xVelocity", rb.linearVelocityX);
 
         FlipToPlayer();
-        //if (!IsPlayerInAttackRange() && )
 
-        if (IsPlayerInAttackRange() && enemy.DetectPlayer())
-            stateMachine.ChangeState(enemy.attackState);
         if (CanNotChasePlayer())
             stateMachine.ChangeState(enemy.idleState);
 
-        if (!enemy.isWall && !enemy.isKnockBack)
+        if (IsPlayerInAttackRange() && enemy.DetectPlayer())
+            stateMachine.ChangeState(enemy.attackState);
+        else  
             enemy.SetVelocity(enemy.battleMoveSpeed * enemy.facingDirection, rb.linearVelocityY);
+            
         if (enemy.isWall)
             enemy.SetVelocity(0, rb.linearVelocityY);
-
 
     }
 
@@ -53,6 +57,28 @@ public class Enemy_BattleState : EnemyState
             enemy.Flip();
     }
 
+    private void MoveAwayFromPlayer()
+    {
+
+        float distance = Mathf.Abs(player.position.x - enemy.transform.position.x);
+
+        if (distance < enemy.moveBackDistance)
+        {
+            if (DirectionToPlayer() == -1)
+                rb.linearVelocity = new Vector2(enemy.moveBackPower.x * - DirectionToPlayer(), enemy.moveBackPower.y);
+            if (DirectionToPlayer() == 1)
+                rb.linearVelocity = new Vector2(enemy.moveBackPower.x * - DirectionToPlayer(), enemy.moveBackPower.y);
+        }
+    }
+
+    private float DirectionToPlayer()
+    {
+        if (player == null)
+            return 0;
+
+        return enemy.transform.position.x > player.position.x ? -1 : 1;
+    }
+
     private bool CanNotChasePlayer() => Time.time > lastTimeDetectedPlayer + enemy.chasePlayerDuration;
 
 
@@ -61,7 +87,6 @@ public class Enemy_BattleState : EnemyState
     public override void Exit()
     {
         base.Exit();
-        enemy.SetVelocity(0, rb.linearVelocityY);
     }
     
 }

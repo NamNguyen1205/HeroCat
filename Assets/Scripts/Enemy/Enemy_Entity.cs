@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy_Entity : Entity
@@ -7,6 +8,7 @@ public class Enemy_Entity : Entity
     public Enemy_BattleState battleState { get; protected set; }
     public Enemy_AttackState attackState { get; protected set; }
     public Enemy_KnockBackState knockBackState { get; protected set; }
+    public Enemy_DeadState deadState { get; protected set; }
     
 
     public float idleTime = 2f;
@@ -19,6 +21,8 @@ public class Enemy_Entity : Entity
     public float battleMoveSpeed = 3f;
     public float attackRange = 2f;
     public float chasePlayerDuration = 5f;
+    public float moveBackDistance = 0.3f;
+    public Vector2 moveBackPower;
 
 
     protected override void HandleColliderDetect()
@@ -26,6 +30,20 @@ public class Enemy_Entity : Entity
         base.HandleColliderDetect();
 
         // isDetectedPlayer = Physics2D.Raycast(playerCheck.position, Vector2.right * facingDirection, playerCheckDistance, whatIsPlayer);
+    }
+
+    public override void EntityDeath()
+    {
+        base.EntityDeath();
+        if (isDead)
+            StartCoroutine(DeathCo());
+
+    }
+
+    private IEnumerator DeathCo()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Destroy(gameObject);
     }
 
     public RaycastHit2D DetectPlayer()
