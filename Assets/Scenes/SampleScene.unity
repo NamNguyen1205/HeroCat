@@ -845,7 +845,7 @@ MonoBehaviour:
   isDetectedPlayer: 0
   battleMoveSpeed: 3
   attackRange: 2
-  chasePlayerDuration: 5
+  battleDuration: 5
   moveBackDistance: 1
   moveBackPower: {x: 3, y: 1}
 --- !u!114 &598545190

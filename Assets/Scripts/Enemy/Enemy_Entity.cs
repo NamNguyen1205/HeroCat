@@ -20,7 +20,7 @@ public class Enemy_Entity : Entity
     [Header("Battle Details")]
     public float battleMoveSpeed = 3f;
     public float attackRange = 2f;
-    public float chasePlayerDuration = 5f;
+    public float battleDuration = 5f;
     public float moveBackDistance = 0.3f;
     public Vector2 moveBackPower;
 
