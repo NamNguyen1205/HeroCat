@@ -11,6 +11,8 @@ public class OffenseGroup_Stat
     public Stat armorReduction;
 
     //elemental Damage
-    
+    public Stat fireDamage;
+    public Stat iceDamage;
+    public Stat electricDamage;
 
 }

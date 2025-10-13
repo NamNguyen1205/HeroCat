@@ -17,6 +17,15 @@ public class Enemy_BattleState : EnemyState
 
         player ??= enemy.DetectPlayer().transform;
 
+        if (player == null)
+        {
+            enemy.Flip();
+            player ??= enemy.DetectPlayer().transform;
+            if (player == null)
+                enemy.FindPlayer();
+        }
+            
+
     }
 
     public override void Update()
@@ -61,16 +70,12 @@ public class Enemy_BattleState : EnemyState
     }
     
     private void UpdateBattleTime() => lastTimeDetectedPlayer = Time.time;
-    
-
     private bool BattleIsOver() => Time.time > lastTimeDetectedPlayer + enemy.battleDuration;
-
-
-    private bool IsPlayerInAttackRange() => Mathf.Abs(player.position.x - enemy.transform.position.x) <= enemy.attackRange;
-
-    public override void Exit()
+    private bool IsPlayerInAttackRange()
     {
-        base.Exit();
-    }
+        if (player == null)
+            return false;
+        return Mathf.Abs(player.position.x - enemy.transform.position.x) <= enemy.attackRange;
+    } 
     
 }

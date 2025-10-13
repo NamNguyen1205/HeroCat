@@ -37,7 +37,11 @@ public class Enemy_Entity : Entity
         base.EntityDeath();
         if (isDead)
             StartCoroutine(DeathCo());
+    }
 
+    public virtual void FindPlayer()
+    {
+        Invoke(nameof(Flip), 1);
     }
 
     private IEnumerator DeathCo()
