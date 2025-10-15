@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
@@ -7,13 +9,19 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private string skillDescription;
     private Sprite skillIcon;
     [SerializeField] private SkillDataOS skillData;
+    [SerializeField] private Image iconImage;
 
     [SerializeField] private UI_SkillToolTip skillToolTip;
+    private RectTransform treeNodeRect;
+    private RectTransform toolTipRect;
+    
+    
 
     private void Awake()
     {
         InitializeSkill();
-
+        treeNodeRect = GetComponent<RectTransform>();
+        toolTipRect = skillToolTip.GetComponent<RectTransform>();
     }
 
     private void InitializeSkill()
@@ -26,16 +34,34 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("clicked");
+        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         skillToolTip.UpdateSkillInfo(skillName, skillDescription);
+        UpdateTooltipPosition();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("exit");
+
+    }
+
+    private void OnValidate()
+    {
+        UpdateIcon();
+    }
+
+    private void UpdateIcon()
+    {
+        gameObject.name = "Skill Node - " + skillData.skillName;
+        iconImage.sprite = skillData.skillIcon;
+    }
+    
+    private void UpdateTooltipPosition()
+    {
+        toolTipRect.position = treeNodeRect.position + new Vector3(skillToolTip.offsetX, skillToolTip.offsetY);
+        
     }
 }

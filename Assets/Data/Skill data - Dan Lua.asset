@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aea1d2510d5144c4ba8423deeaf11dcf, type: 3}
-  m_Name: Skill data - Na Cao Su
+  m_Name: Skill data - Dan Lua
   m_EditorClassIdentifier: 
-  skillName: "N\xE1 cao su"
-  skillDescription: "N\xE1 cao su c\xF3 th\u1EC3 b\u1EAFn 5 vi\xEAn \u0111\u1EA1n.
-    L\u01B0\u1EE3ng \u0111\u1EA1n h\u1ED3i d\u1EA7n theo th\u1EDDi gian."
-  skillIcon: {fileID: -7929317182677814311, guid: 191236521076c2543becb0e98f350c08, type: 3}
+  skillName: "\u0110\u1EA1n l\u1EEDa"
+  skillDescription: "B\u1EAFn ra 1 vi\xEAn \u0111\u1EA1n l\u1EEDa g\xE2y hi\u1EC7u
+    \u1EE9ng thi\xEAu \u0111\u1ED1t."
+  skillIcon: {fileID: 6671531605914933198, guid: 191236521076c2543becb0e98f350c08, type: 3}
