@@ -14,8 +14,6 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] private UI_SkillToolTip skillToolTip;
     private RectTransform treeNodeRect;
     private RectTransform toolTipRect;
-    
-    
 
     private void Awake()
     {
@@ -34,18 +32,24 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        //unlock skill
+        UnlockSkill();
+    }
+
+    private void UnlockSkill()
+    {
         
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         skillToolTip.UpdateSkillInfo(skillName, skillDescription);
-        UpdateTooltipPosition();
+        skillToolTip.ShowToolTip(true, treeNodeRect);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-
+        skillToolTip.ShowToolTip(false, treeNodeRect);
     }
 
     private void OnValidate()
@@ -58,10 +62,5 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         gameObject.name = "Skill Node - " + skillData.skillName;
         iconImage.sprite = skillData.skillIcon;
     }
-    
-    private void UpdateTooltipPosition()
-    {
-        toolTipRect.position = treeNodeRect.position + new Vector3(skillToolTip.offsetX, skillToolTip.offsetY);
-        
-    }
+
 }

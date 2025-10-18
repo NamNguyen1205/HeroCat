@@ -8,4 +8,8 @@ public class SkillDataOS : ScriptableObject
     [TextArea]
     public string skillDescription;
     public Sprite skillIcon;
+
+    [Header("Skill infor")]
+    public float cooldown = 0;
+    public bool unlockDefault;
 }
