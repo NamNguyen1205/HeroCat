@@ -27,7 +27,7 @@ public class Entity_Combat : MonoBehaviour
 
             damage = entityStat.GetPhysicalDamage();
 
-            bool GotHit = damageable.TakeDamage(damage, transform);
+            bool GotHit = damageable.TakeDamage(damage, transform, ElementalType.None);
 
             
         }

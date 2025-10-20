@@ -23,7 +23,21 @@ public class Enemy_Entity : Entity
     public float battleDuration = 5f;
     public float moveBackDistance = 0.3f;
     public Vector2 moveBackPower;
+    public float slowdownSpeed = 1;
 
+
+    protected override IEnumerator SlowdownCo(float duration)
+    {
+        anim.speed = 1;
+        anim.speed = anim.speed * slowMultiplier;
+        slowdownSpeed = slowMultiplier;
+
+        yield return new WaitForSeconds(duration);
+
+        anim.speed = 1;
+        slowdownSpeed = 1;
+
+    }
 
     protected override void HandleColliderDetect()
     {

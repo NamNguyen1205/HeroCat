@@ -540,8 +540,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2096585465}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -715,6 +715,11 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: 8be0149e66941304b8c7aa0013f230bb, type: 2}
   iconImage: {fileID: 746958221}
   skillToolTip: {fileID: 500776135}
+  neededSkillNodes:
+  - {fileID: 1975390065}
+  conflictSkillNodes:
+  - {fileID: 2054567754}
+  isUnlocked: 0
 --- !u!1 &334764650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,13 +1332,14 @@ GameObject:
   - component: {fileID: 598545191}
   - component: {fileID: 598545192}
   - component: {fileID: 598545193}
+  - component: {fileID: 598545194}
   m_Layer: 8
   m_Name: Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &598545185
 Transform:
   m_ObjectHideFlags: 0
@@ -1343,7 +1349,7 @@ Transform:
   m_GameObject: {fileID: 598545184}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.46, y: -1.69, z: 0}
+  m_LocalPosition: {x: 10.03, y: -1.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1434,6 +1440,7 @@ MonoBehaviour:
   entity_Health: {fileID: 0}
   moveSpeed: 2
   isFacingRight: 1
+  slowMultiplier: 0.7
   attackVelocities: []
   isDead: 0
   isKnockBack: 0
@@ -1461,6 +1468,7 @@ MonoBehaviour:
   battleDuration: 5
   moveBackDistance: 1
   moveBackPower: {x: 3, y: 1}
+  slowdownSpeed: 1
 --- !u!114 &598545190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1527,36 +1535,63 @@ MonoBehaviour:
   majorGroup:
     maxHealth:
       baseValue: 1000
+      statModifiers: []
     strength:
       baseValue: 0
+      statModifiers: []
     agility:
       baseValue: 0
+      statModifiers: []
     intelligence:
       baseValue: 0
+      statModifiers: []
     vitality:
       baseValue: 0
+      statModifiers: []
   offenseGroup:
     physicalDamage:
       baseValue: 20
+      statModifiers: []
     critChance:
       baseValue: 0
+      statModifiers: []
     critDamage:
       baseValue: 0
+      statModifiers: []
     armorReduction:
       baseValue: 0
+      statModifiers: []
     fireDamage:
       baseValue: 0
+      statModifiers: []
     iceDamage:
       baseValue: 0
+      statModifiers: []
     electricDamage:
       baseValue: 0
+      statModifiers: []
   defenseGroup:
     armor:
       baseValue: 0
+      statModifiers: []
     resistance:
       baseValue: 0
+      statModifiers: []
     resistEffect:
       baseValue: 0
+      statModifiers: []
+--- !u!114 &598545194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598545184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7d2273178243a46926d6c65bf03120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2197,6 +2232,8 @@ GameObject:
   - component: {fileID: 870195552}
   - component: {fileID: 870195553}
   - component: {fileID: 870195554}
+  - component: {fileID: 870195555}
+  - component: {fileID: 870195556}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -2222,6 +2259,7 @@ Transform:
   - {fileID: 1433701047}
   - {fileID: 1974571083}
   - {fileID: 989534073}
+  - {fileID: 1765979285}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &870195548
@@ -2303,6 +2341,7 @@ MonoBehaviour:
   entity_Health: {fileID: 0}
   moveSpeed: 8
   isFacingRight: 1
+  slowMultiplier: 0.7
   attackVelocities:
   - {x: 0.2, y: 2}
   - {x: 0.2, y: 2}
@@ -2333,6 +2372,7 @@ MonoBehaviour:
   wallJumpForce: {x: 8, y: 12}
   wallJumpTimeDuration: 0.3
   isWallSlide: 0
+  skillManager: {fileID: 0}
 --- !u!114 &870195551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2399,36 +2439,76 @@ MonoBehaviour:
   majorGroup:
     maxHealth:
       baseValue: 1000
+      statModifiers: []
     strength:
       baseValue: 0
+      statModifiers: []
     agility:
       baseValue: 0
+      statModifiers: []
     intelligence:
       baseValue: 0
+      statModifiers: []
     vitality:
       baseValue: 0
+      statModifiers: []
   offenseGroup:
     physicalDamage:
       baseValue: 20
+      statModifiers: []
     critChance:
       baseValue: 0
+      statModifiers: []
     critDamage:
       baseValue: 0
+      statModifiers: []
     armorReduction:
       baseValue: 0
+      statModifiers: []
     fireDamage:
       baseValue: 0
+      statModifiers: []
     iceDamage:
       baseValue: 0
+      statModifiers: []
     electricDamage:
       baseValue: 0
+      statModifiers: []
   defenseGroup:
     armor:
       baseValue: 0
+      statModifiers: []
     resistance:
       baseValue: 0
+      statModifiers: []
     resistEffect:
       baseValue: 0
+      statModifiers: []
+--- !u!114 &870195555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870195545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9be3a78a42dea9419b1e64d167c8cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill_NaCaoSu: {fileID: 0}
+--- !u!114 &870195556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870195545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7d2273178243a46926d6c65bf03120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &890437170
 GameObject:
   m_ObjectHideFlags: 0
@@ -4211,7 +4291,7 @@ RectTransform:
   m_Father: {fileID: 1368127469}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -2.4100037, y: 0}
   m_SizeDelta: {x: 1.86, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4328,6 +4408,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1749545276}
   m_CullTransparentMesh: 1
+--- !u!1 &1765979284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1765979285}
+  - component: {fileID: 1765979286}
+  m_Layer: 7
+  m_Name: SkillHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1765979285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765979284}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 870195547}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1765979286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765979284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec659c4899a81914db6aa9ddab918e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 2
+  scaleDamage: 0
+  regularBullet: {fileID: 4371216321494363396, guid: 53e4a6f5e4f6d69488f86d5abc81a141, type: 3}
+  FireBullet: {fileID: 3109750097342845603, guid: e49fcd66fcde5c94f9f052399c11e8b2, type: 3}
+  IceBullet: {fileID: 955666179633523732, guid: 0788d0c875a2b4b47abc7d531eaa4ff6, type: 3}
+  bulletPower: 2.5
+  DotPrefab: {fileID: 1825120502249544200, guid: f6f4c6c62f4e476449191d6156390aee, type: 3}
+  numberOfDots: 20
+  spaceBetweenDots: 0.04
 --- !u!1 &1780959795
 GameObject:
   m_ObjectHideFlags: 0
@@ -7780,6 +7913,9 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: a14dc74c51e737f418f92db1e5cd870e, type: 2}
   iconImage: {fileID: 578718097}
   skillToolTip: {fileID: 500776135}
+  neededSkillNodes: []
+  conflictSkillNodes: []
+  isUnlocked: 0
 --- !u!1 &1981826507
 GameObject:
   m_ObjectHideFlags: 0
@@ -13516,6 +13652,11 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: 1cfb246466d02c44d846a6c10d6b3de4, type: 2}
   iconImage: {fileID: 334764652}
   skillToolTip: {fileID: 500776135}
+  neededSkillNodes:
+  - {fileID: 1975390065}
+  conflictSkillNodes:
+  - {fileID: 321802975}
+  isUnlocked: 0
 --- !u!1 &2070883865
 GameObject:
   m_ObjectHideFlags: 0

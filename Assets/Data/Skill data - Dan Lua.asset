@@ -16,3 +16,11 @@ MonoBehaviour:
   skillDescription: "B\u1EAFn ra 1 vi\xEAn \u0111\u1EA1n l\u1EEDa g\xE2y hi\u1EC7u
     \u1EE9ng thi\xEAu \u0111\u1ED1t."
   skillIcon: {fileID: 6671531605914933198, guid: 191236521076c2543becb0e98f350c08, type: 3}
+  cooldown: 2
+  scaleDamage: 2
+  duration: 3
+  takeDamageTime: 0.5
+  unlockDefault: 0
+  isUnlocked: 0
+  skillType: 0
+  skillUpgradeType: 1

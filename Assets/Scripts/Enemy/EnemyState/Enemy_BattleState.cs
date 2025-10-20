@@ -50,7 +50,7 @@ public class Enemy_BattleState : EnemyState
         if (IsPlayerInAttackRange() && enemy.DetectPlayer())
             stateMachine.ChangeState(enemy.attackState);
         else if(!enemy.isWall)
-            enemy.SetVelocity(enemy.battleMoveSpeed * DirectionToPlayer(), rb.linearVelocityY);
+            enemy.SetVelocity(enemy.battleMoveSpeed * DirectionToPlayer() * enemy.slowdownSpeed, rb.linearVelocityY);
     }
 
     private void FaceToPlayerAgain()

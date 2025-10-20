@@ -17,6 +17,8 @@ public class Player_Entity : Entity
     public Player_BasicAttackState basicAttackState { get; private set; }
     public Player_KnockBackState knockBackState { get; private set; }
     public Player_JumpAttackState jumpAttackState { get; private set; }
+    public Player_AimState aimState { get; private set; }
+    //public Player_RangeAttackState rangeAttackState { get; private set; }
 
 
     public Vector2 movement { get; private set; }
@@ -39,10 +41,12 @@ public class Player_Entity : Entity
     public float wallJumpTimeDuration = 1f;
     public bool isWallSlide;
 
+    public Player_SkillManager skillManager;
 
     protected override void Awake()
     {
         base.Awake();
+        skillManager = GetComponent<Player_SkillManager>();
         input = new PlayerInputControll();
 
         idleState = new Player_IdleState(this, stateMachine, "idle");
@@ -55,6 +59,8 @@ public class Player_Entity : Entity
         basicAttackState = new Player_BasicAttackState(this, stateMachine, "basicAttack");
         knockBackState = new Player_KnockBackState(this, stateMachine, "knockback");
         jumpAttackState = new Player_JumpAttackState(this, stateMachine, "jumpAttack");
+        aimState = new Player_AimState(this, stateMachine, "aim");
+        //rangeAttackState = new Player_RangeAttackState(this, stateMachine, "rangeAttack");
     }
 
     private void OnEnable()

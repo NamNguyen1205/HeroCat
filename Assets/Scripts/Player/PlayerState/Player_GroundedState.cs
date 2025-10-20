@@ -24,6 +24,8 @@ public class Player_GroundedState : PlayerState
 
         if (player.input.Player.BasicAttack.WasPressedThisFrame())
             stateMachine.ChangeState(player.basicAttackState);
-        
+        //attack range state change
+        if (player.input.Player.Aim.WasPerformedThisFrame())
+            stateMachine.ChangeState(player.aimState);
     }
 }

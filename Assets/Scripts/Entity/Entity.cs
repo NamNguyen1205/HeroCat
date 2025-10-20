@@ -14,6 +14,7 @@ public class Entity : MonoBehaviour
     public float moveSpeed = 5;
     public bool isFacingRight = true;
     public float facingDirection => isFacingRight ? 1 : -1;
+    public float slowMultiplier = 0.7f;
     [Header("Attack Details")]
     public Vector2[] attackVelocities;
     public bool isDead = false;
@@ -34,6 +35,8 @@ public class Entity : MonoBehaviour
     public bool isWall;
 
     public event Action OnFlipping;
+
+    private Coroutine slowdownCo;
 
     protected virtual void Awake()
     {
@@ -57,6 +60,19 @@ public class Entity : MonoBehaviour
     {
         HandleColliderDetect();
         stateMachine.UpdateActiveState();
+    }
+
+    public virtual void SlowdownEffect(float duration)
+    {
+        if (slowdownCo != null)
+            StopCoroutine(slowdownCo);
+
+        slowdownCo = StartCoroutine(SlowdownCo(duration));
+    }
+    
+    protected virtual IEnumerator SlowdownCo(float duration)
+    {
+        yield return new WaitForSeconds(duration);
     }
 
     public virtual void EntityDeath()

@@ -4,6 +4,7 @@ public class PlayerState : EntityState
 {
     protected Player_Entity player;
     protected SpriteRenderer sr;
+    protected Player_SkillManager skillManager;
     public PlayerState(Player_Entity player, StateMachine stateMachine, string animBoolName) : base(stateMachine, animBoolName)
     {
         this.player = player;
@@ -11,6 +12,12 @@ public class PlayerState : EntityState
         anim = player.anim;
         rb = player.rb;
         sr = player.sr;
+        skillManager = player.skillManager;
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
     }
 
     public override void Update()

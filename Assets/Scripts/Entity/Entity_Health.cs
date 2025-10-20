@@ -23,7 +23,7 @@ public class Entity_Health : MonoBehaviour, IDamageable
 
     }
     //tranform là của entity gây sát thương
-    public bool TakeDamage(float damage, Transform damageDealer)
+    public bool TakeDamage(float damage, Transform damageDealer, ElementalType elemental)
     {
 
         Vector2 knockbackVelocity = CalculateKnockBack(damage, damageDealer);
