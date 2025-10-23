@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "RPG Setup/Skill Data", fileName = "Skill data - ")]
-public class SkillDataOS : ScriptableObject
+public class SkillDataSO : ScriptableObject
 {
     [Header("Skill description")]
     public string skillName;

@@ -18,7 +18,7 @@ public class Skill_Base : MonoBehaviour
     public bool OnCooldown() => Time.time < lastTimeUsed + cooldown;
 
     //Set skill Upgrade type and change skill upgrade infor
-    public void SetUnlockByUpgradeType(SkillDataOS skillData)
+    public void SetUnlockByUpgradeType(SkillDataSO skillData)
     {
         skillUpgradeType = skillData.skillUpgradeType;
         cooldown = skillData.cooldown;

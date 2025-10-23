@@ -9,7 +9,7 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private string skillName;
     private string skillDescription;
     private Sprite skillIcon;
-    [SerializeField] private SkillDataOS skillData;
+    [SerializeField] private SkillDataSO skillData;
     [SerializeField] private Image iconImage;
 
     [SerializeField] private UI_SkillToolTip skillToolTip;

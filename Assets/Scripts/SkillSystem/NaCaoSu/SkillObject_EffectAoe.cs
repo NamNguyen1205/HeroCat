@@ -6,7 +6,7 @@ public class SkillObject_EffectAoe : MonoBehaviour
     [SerializeField] private LayerMask whatIsEnemy;
     [SerializeField] private float checkRadius;
     [SerializeField] private Transform checkCenter;
-    [SerializeField] SkillDataOS skillData;
+    [SerializeField] SkillDataSO skillData;
     protected Entity_Stat playerStat;
     protected Player_Entity player;
     protected Entity_StatusEffect targetStatusEffect;

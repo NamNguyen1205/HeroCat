@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa8ddb9f8d0383c40884d6a1672593e5, type: 3}
-  m_Name: item
+  m_Script: {fileID: 11500000, guid: e505bba676b355549a3b577253825b51, type: 3}
+  m_Name: Item data - Silver armor
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2437653986576350464, guid: 6b6232f26992edd43a8bc3ce3c45817e, type: 3}
-  itemName: Learn
-  icon: {fileID: -6045110389800113485, guid: 400b31bf792cea44dbf4292686b3210e, type: 3}
-  id: 1
+  itemName: Silver armor
+  itemIcon: {fileID: -2923825397701648965, guid: 4500e51eee1a5c047b7d5508045dc71a, type: 3}
+  itemType: 1
