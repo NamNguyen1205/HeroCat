@@ -12,10 +12,15 @@ public class Object_ItemPickUp : MonoBehaviour
     
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
-        {
-            Debug.Log("pick up");
-        }
+        if (collision.gameObject.layer != LayerMask.NameToLayer("Player"))
+            return;
+
+        Inventory_Item itemToAdd = new Inventory_Item(itemData);
+        Inventory_Player playerInventory = collision.gameObject.GetComponent<Inventory_Player>();
+
+        playerInventory.AddItem(itemToAdd);
+        
+        Destroy(gameObject);
     }
 
     private void OnValidate()

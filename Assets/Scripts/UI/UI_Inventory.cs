@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class UI_Inventory : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Inventory_Player inventoryPlayer;
+    [SerializeField] private UI_ItemSlotParent itemSlotParent;
+
+    private void Awake()
     {
+        inventoryPlayer = FindFirstObjectByType<Inventory_Player>();
         
+        inventoryPlayer.OnInventoryChanged += UpdateUIInventory;
+        UpdateUIInventory();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateUIInventory()
     {
-        
+        // Update the UI with the player's inventory items
+        itemSlotParent.UpDateUISlots(inventoryPlayer.itemList);
     }
 }
