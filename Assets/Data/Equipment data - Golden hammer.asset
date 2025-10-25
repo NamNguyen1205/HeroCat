@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e505bba676b355549a3b577253825b51, type: 3}
-  m_Name: Item data - Silver armor
+  m_Script: {fileID: 11500000, guid: 1575bfc8abd7f904e841bd3ca49f1dd7, type: 3}
+  m_Name: Equipment data - Golden hammer
   m_EditorClassIdentifier: 
-  itemName: Silver armor
-  itemIcon: {fileID: -2923825397701648965, guid: 4500e51eee1a5c047b7d5508045dc71a, type: 3}
-  itemType: 1
+  itemName: Golden hammer
+  itemIcon: {fileID: -2140453925309197124, guid: 4500e51eee1a5c047b7d5508045dc71a, type: 3}
+  itemType: 0
+  maxStackSize: 1

@@ -14,6 +14,16 @@ public class Inventory_Base : MonoBehaviour
         itemList = new List<Inventory_Item>();
     }
 
+    public bool CanAddItem()
+    {
+        if (itemList.Count < inventoryMaxSize)
+            return true;
+        else
+            return false;
+    }
+    
+    
+
     public virtual void AddItem(Inventory_Item itemToAdd)
     {
         itemList.Add(itemToAdd);

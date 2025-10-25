@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Inventory/Equipment", fileName = "Item data - ")]
+[CreateAssetMenu(menuName = "Inventory/Equipment", fileName = "Equipment data - ")]
 public class EquipmentDataSO : ItemDataSO
 {
 
