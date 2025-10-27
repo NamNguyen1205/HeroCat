@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Inventory_Base : MonoBehaviour
@@ -21,8 +22,30 @@ public class Inventory_Base : MonoBehaviour
         else
             return false;
     }
+
+    public bool CanAddStack(Inventory_Item itemToAdd)
+    {
+        foreach (Inventory_Item item in itemList)
+        {
+            if (item.itemData == itemToAdd.itemData && item.currentStackSize < item.itemData.maxStackSize)
+                return true;
+        }
+
+        return false;
+    }
     
-    
+    public virtual void AddItemStack(Inventory_Item itemToAdd)
+    {        
+        foreach (Inventory_Item item in itemList)
+        {
+            if(item.itemData == itemToAdd.itemData && CanAddStack(item))
+            {
+                item.currentStackSize++;
+            }
+        }
+        OnInventoryChanged?.Invoke();
+        
+    }
 
     public virtual void AddItem(Inventory_Item itemToAdd)
     {

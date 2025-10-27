@@ -9,7 +9,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
     private Inventory_Item itemInSlot;
     [Header("Slot Info")]
     [SerializeField] private Image itemIcon;
-    private TextMeshProUGUI itemStack;
+    [SerializeField] private TextMeshProUGUI itemStack;
 
     private void Awake()
     {
@@ -23,10 +23,12 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
         if (itemInSlot == null)
         {
             itemIcon.color = new Color(1, 1, 1, 0);
+            itemStack.text = "";
             return;
         }
         itemIcon.color = Color.white;
         itemIcon.sprite = itemInSlot.itemData.itemIcon;
+        itemStack.text = itemInSlot.currentStackSize.ToString();
        
     }
 

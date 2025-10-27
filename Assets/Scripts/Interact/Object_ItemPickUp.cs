@@ -18,10 +18,16 @@ public class Object_ItemPickUp : MonoBehaviour
         Inventory_Item itemToAdd = new Inventory_Item(itemData);
         Inventory_Player playerInventory = collision.gameObject.GetComponent<Inventory_Player>();
 
-        if(playerInventory.CanAddItem() == false)
+        if(playerInventory.CanAddStack(itemToAdd) == true)
+        {
+            playerInventory.AddItemStack(itemToAdd);
+            Destroy(gameObject);
             return;
+        }
 
-        playerInventory.AddItem(itemToAdd);
+        if(playerInventory.CanAddItem() == true)
+            playerInventory.AddItem(itemToAdd);
+
         
         Destroy(gameObject);
     }
