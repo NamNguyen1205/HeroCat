@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class UI_EquippedSlot : MonoBehaviour
+public class UI_EquippedSlot : UI_ItemSlot
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public ItemType equipType;
+
+    public bool HasEquipInSlot()
     {
-        
+        if (itemInSlot == null)
+            return false;
+
+        return true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

@@ -3562,6 +3562,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 696859275}
+  - component: {fileID: 696859278}
   - component: {fileID: 696859277}
   - component: {fileID: 696859276}
   m_Layer: 5
@@ -3633,6 +3634,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696859274}
   m_CullTransparentMesh: 1
+--- !u!114 &696859278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696859274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d116d7cb036068546b0d9ebde39635b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &746958219
 GameObject:
   m_ObjectHideFlags: 0
@@ -4784,6 +4797,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemList: []
+  equipList:
+  - equipType: 0
+    equipedItem:
+      itemData: {fileID: 0}
+      currentStackSize: 0
+  - equipType: 1
+    equipedItem:
+      itemData: {fileID: 0}
+      currentStackSize: 0
+  - equipType: 2
+    equipedItem:
+      itemData: {fileID: 0}
+      currentStackSize: 0
+  - equipType: 3
+    equipedItem:
+      itemData: {fileID: 0}
+      currentStackSize: 0
 --- !u!1 &890437170
 GameObject:
   m_ObjectHideFlags: 0
@@ -6216,6 +6246,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579429df085e97d4cb5b9d33395ba987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemIcon: {fileID: 1081938055}
+  itemStack: {fileID: 0}
+  equipType: 0
 --- !u!1 &1081938053
 GameObject:
   m_ObjectHideFlags: 0
@@ -6603,6 +6636,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579429df085e97d4cb5b9d33395ba987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemIcon: {fileID: 831886887}
+  itemStack: {fileID: 0}
+  equipType: 0
 --- !u!1 &1129411392
 GameObject:
   m_ObjectHideFlags: 0
@@ -7545,6 +7581,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579429df085e97d4cb5b9d33395ba987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemIcon: {fileID: 898853472}
+  itemStack: {fileID: 0}
+  equipType: 0
 --- !u!1 &1280741094
 GameObject:
   m_ObjectHideFlags: 0
@@ -12802,6 +12841,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579429df085e97d4cb5b9d33395ba987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemIcon: {fileID: 1639912420}
+  itemStack: {fileID: 0}
+  equipType: 1
 --- !u!1 &1855559037
 GameObject:
   m_ObjectHideFlags: 0
