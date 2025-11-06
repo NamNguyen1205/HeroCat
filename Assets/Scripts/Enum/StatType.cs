@@ -16,4 +16,5 @@ public enum StatType
     armor,
     resistance,
     resistEffect,
+    none,
 }

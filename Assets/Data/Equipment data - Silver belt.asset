@@ -16,3 +16,10 @@ MonoBehaviour:
   itemIcon: {fileID: -5075842222863922406, guid: 4500e51eee1a5c047b7d5508045dc71a, type: 3}
   itemType: 1
   maxStackSize: 1
+  itemModifiers:
+  - statType: 5
+    value: 10
+  - statType: 0
+    value: 30
+  - statType: 3
+    value: 30

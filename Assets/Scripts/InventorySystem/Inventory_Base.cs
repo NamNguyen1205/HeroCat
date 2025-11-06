@@ -6,6 +6,7 @@ using UnityEngine;
 public class Inventory_Base : MonoBehaviour
 {
     public event Action OnInventoryChanged;
+    protected Player_Stat playerStat;
 
     private int inventoryMaxSize = 10;
     public List<Inventory_Item> itemList;
@@ -13,6 +14,7 @@ public class Inventory_Base : MonoBehaviour
     protected virtual void Awake()
     {
         itemList = new List<Inventory_Item>();
+        playerStat = FindFirstObjectByType<Player_Stat>();
     }
 
     public bool CanAddItem()

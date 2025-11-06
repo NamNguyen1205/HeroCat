@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private Inventory_Player inventoryPlayer;
-    protected Inventory_Item itemInSlot;
+    private Inventory_Item itemInSlot;
     [Header("Slot Info")]
-    public Image itemIcon;
+    [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemStack;
 
     private void Awake()
@@ -16,7 +16,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
         inventoryPlayer = FindFirstObjectByType<Inventory_Player>();
     }
 
-    public virtual void UpdateSlot(Inventory_Item item)
+    public void UpdateSlot(Inventory_Item item)
     {
         itemInSlot = item;
 
@@ -28,13 +28,16 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
         }
         itemIcon.color = Color.white;
         itemIcon.sprite = itemInSlot.itemData.itemIcon;
-        itemStack.text = itemInSlot.currentStackSize == 1 ? "" : itemInSlot.currentStackSize.ToString();
+
+        if(itemStack != null)
+            itemStack.text = itemInSlot.currentStackSize == 1 ? "" : itemInSlot.currentStackSize.ToString();
 
     }
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
         //TryEquipItem(itemInSlot) -> truyen vao itemInSlot
+        inventoryPlayer.TryEquipItem(itemInSlot);
     }
 
     public virtual void OnPointerEnter(PointerEventData eventData)
