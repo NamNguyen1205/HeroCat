@@ -7,6 +7,7 @@ public class Inventory_Base : MonoBehaviour
 {
     public event Action OnInventoryChanged;
     protected Player_Stat playerStat;
+    protected Entity_Health entityHealth;
 
     private int inventoryMaxSize = 10;
     public List<Inventory_Item> itemList;
@@ -15,6 +16,14 @@ public class Inventory_Base : MonoBehaviour
     {
         itemList = new List<Inventory_Item>();
         playerStat = FindFirstObjectByType<Player_Stat>();
+        entityHealth = playerStat.gameObject.GetComponent<Entity_Health>();
+    }
+
+    public void TryUseItem(Inventory_Item itemToUse)
+    {
+        if (itemToUse == null) return;
+
+        itemToUse.itemData?.itemEffectData.ExecuteEffect();
     }
 
     public bool CanAddItem()
@@ -58,7 +67,6 @@ public class Inventory_Base : MonoBehaviour
 
     public virtual void RemoveItem(Inventory_Item itemToRemove)
     {
-
 
         itemList.Remove(itemToRemove);
 

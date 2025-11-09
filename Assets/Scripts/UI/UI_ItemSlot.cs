@@ -36,8 +36,21 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
-        //TryEquipItem(itemInSlot) -> truyen vao itemInSlot
-        inventoryPlayer.TryEquipItem(itemInSlot);
+        if (itemInSlot == null) return;
+        
+        //use consumable
+        if (itemInSlot.itemData.itemType == ItemType.Consumable)
+        {
+            inventoryPlayer.TryUseItem(itemInSlot);
+            return;
+        }
+        else
+        {
+            inventoryPlayer.TryEquipItem(itemInSlot);
+            return;
+        }
+        
+        
     }
 
     public virtual void OnPointerEnter(PointerEventData eventData)

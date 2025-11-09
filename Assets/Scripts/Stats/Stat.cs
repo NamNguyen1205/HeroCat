@@ -9,17 +9,13 @@ public class Stat
 {
     [SerializeField] private float baseValue = 0;
     [SerializeField] private List<StatModifier> statModifiers = new List<StatModifier>();
-    private bool needToCalculate = false;
-    private float finalValue;
+    [SerializeField] private float finalValue;
     public float GetValue()
     {
         finalValue = baseValue;
 
-        if(needToCalculate)
-        {
-            finalValue = GetFinalValue();
-            needToCalculate = false;
-        }
+        finalValue = GetFinalValue();
+
         return finalValue;
     }
 
@@ -28,22 +24,21 @@ public class Stat
     {
         StatModifier modToAdd = new StatModifier(value, source);
         statModifiers.Add(modToAdd);
-        needToCalculate = true;
     }
 
     public void RemoveModifier(string source)
     {
         statModifiers.RemoveAll(stat => stat.source == source);
-        needToCalculate = true;
     }
 
     public float GetFinalValue()
     {
+        float totalValue = baseValue;
         foreach (var modifier in statModifiers)
         {
-            finalValue += modifier.value;
+            totalValue += modifier.value;
         }
-        return finalValue;
+        return totalValue;
     }
 }
 

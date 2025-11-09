@@ -9,11 +9,7 @@ public class ItemDataSO : ScriptableObject
     public Sprite itemIcon;
     public ItemType itemType;
     public int maxStackSize = 1;
-}
 
-// [Serializable]
-// public class ItemModifier
-// {
-//     public StatType statType;
-//     public float value;
-// }
+    public ItemEffectDataSO itemEffectData;
+    
+}

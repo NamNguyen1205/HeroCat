@@ -32,7 +32,7 @@ public class Entity_Health : MonoBehaviour, IDamageable
 
         vfx?.PlayOnTakeDamageVfx();
         vfx.CreateOnHitVfxPrefab();
-        
+
         entity?.PerformKnockBack(knockbackVelocity, knockbackDuration);
 
         ReduceHp(damage);
@@ -79,5 +79,9 @@ public class Entity_Health : MonoBehaviour, IDamageable
     public float GetMaxHealth() => entityStat.GetMaxHealth();
     public float GetCurrentHealth() => currentHealth;
 
+    public void UpdateCurrentHealth() => currentHealth = GetMaxHealth();
+    public void HealHP(float healValue) => currentHealth = Mathf.Clamp(currentHealth + healValue, 0, GetMaxHealth());
+
     
+
 }
