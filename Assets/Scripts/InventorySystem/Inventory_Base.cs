@@ -24,6 +24,13 @@ public class Inventory_Base : MonoBehaviour
         if (itemToUse == null) return;
 
         itemToUse.itemData?.itemEffectData.ExecuteEffect();
+
+        if (itemToUse.currentStackSize > 1)
+            itemToUse.RemoveStack();
+        else
+            RemoveItem(itemToUse);
+        
+        OnInventoryChanged?.Invoke();
     }
 
     public bool CanAddItem()

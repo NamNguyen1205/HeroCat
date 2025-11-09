@@ -45,9 +45,6 @@ public class Inventory_Item
         }
     }
 
-    public void HealHP()
-    {
-        
-    }
+    public void RemoveStack() => currentStackSize--;
 
 }
