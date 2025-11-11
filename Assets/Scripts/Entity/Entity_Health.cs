@@ -37,6 +37,8 @@ public class Entity_Health : MonoBehaviour, IDamageable
 
         ReduceHp(damage);
 
+        // if (damageDealer == null)
+        //     return false;
 
         return true;
     }

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Entity_Combat : MonoBehaviour
 {
+    private Entity_SoundSFX soundSfx;
     [SerializeField] private Transform target;
     private Entity_VFX entityVfx;
     private Entity_Stat entityStat;
@@ -14,6 +15,7 @@ public class Entity_Combat : MonoBehaviour
     {
         entityVfx = GetComponent<Entity_VFX>();
         entityStat = GetComponent<Entity_Stat>();
+        soundSfx = GetComponent<Entity_SoundSFX>();
 
     }
 
@@ -28,8 +30,6 @@ public class Entity_Combat : MonoBehaviour
             damage = entityStat.GetPhysicalDamage();
 
             bool GotHit = damageable.TakeDamage(damage, transform, ElementalType.None);
-
-            
         }
         
         
