@@ -21,6 +21,7 @@ public class Entity_Combat : MonoBehaviour
 
     public void PerformAttack()
     {
+        bool GotHit = false;
         //check attack ai
         foreach (var target in TargetColliders())
         {
@@ -29,9 +30,18 @@ public class Entity_Combat : MonoBehaviour
 
             damage = entityStat.GetPhysicalDamage();
 
-            bool GotHit = damageable.TakeDamage(damage, transform, ElementalType.None);
+            GotHit = damageable.TakeDamage(damage, transform, ElementalType.None);
+
+            if (GotHit)
+            {
+                soundSfx?.PlayAttackSfx();
+            }
         }
         
+        if(GotHit == false)
+        {
+            soundSfx?.PlayAttackMissSfx();
+        }
         
     }
 
