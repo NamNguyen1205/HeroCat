@@ -13,6 +13,7 @@ public class Player_DashState : PlayerState
         base.Enter();
 
         stateTimer = player.dashDuration;
+        skillManager.skill_Dash.StartDashCooldown();
     }
 
     public override void Update()

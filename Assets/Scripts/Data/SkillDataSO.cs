@@ -14,6 +14,7 @@ public class SkillDataSO : ScriptableObject
     public float scaleDamage = 1.5f;
     public float duration = 0;
     public float takeDamageTime = 0;
+    public int skillPointToUnlock = 0;
     public bool unlockDefault;
     public bool isUnlocked;
     public SkillType skillType;

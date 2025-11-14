@@ -3,7 +3,7 @@ using UnityEngine;
 public class Skill_Base : MonoBehaviour
 {
     protected bool isUnlocked;
-    protected SkillUpgradeType skillUpgradeType;
+    public SkillUpgradeType skillUpgradeType;
     private float lastTimeUsed;
     [SerializeField] protected float cooldown;
     [SerializeField] protected float scaleDamage;
@@ -25,5 +25,6 @@ public class Skill_Base : MonoBehaviour
         scaleDamage = skillData.scaleDamage;
     }
 
+    public float GetCoolDown() => cooldown;
     
 }

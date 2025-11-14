@@ -22,6 +22,7 @@ public class UI_ConnectionNode : MonoBehaviour
         UpdateLine();
     }
 
+    [ContextMenu("UpdatePosition")]
     private void UpdateLine()
     {
         foreach (var line in connectionLines)

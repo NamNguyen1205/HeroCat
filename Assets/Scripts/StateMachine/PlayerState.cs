@@ -23,11 +23,20 @@ public class PlayerState : EntityState
     public override void Update()
     {
         base.Update();
-        if (player.input.Player.Dash.WasPressedThisFrame())
+
+        if (player.input.Player.Dash.WasPressedThisFrame() && !skillManager.skill_Dash.OnCooldown())
         {
             if (stateMachine.currentState == player.wallSlideState)
                 player.Flip();
+            
+            if(skillManager.skill_Dash.skillUpgradeType == SkillUpgradeType.DashAndBack)
+            {
+                skillManager.skill_Dash.CreateShadow(player.transform.position);
+            }
 
+            //use visual effect
+            if(stateMachine.currentState is Player_GroundedState)
+                VisualEffectManager.instance.StartDashEffect(player.transform.position, player.isFacingRight);
             stateMachine.ChangeState(player.dashState);
         }
 

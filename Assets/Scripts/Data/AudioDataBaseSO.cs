@@ -10,6 +10,7 @@ public class AudioDataBaseSO : ScriptableObject
 {
     public List<AudioClipData> attackSound;
     public List<AudioClipData> player;
+    public List<AudioClipData> bgmSound;
     public Dictionary<string, AudioClipData> audioCollection;
 
     private void OnEnable()

@@ -20,8 +20,12 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+
+
     public void PlaySfx(AudioClip audioClip, AudioSource audioSource)
     {
         audioSource.PlayOneShot(audioClip);
     }
+
+    
 }

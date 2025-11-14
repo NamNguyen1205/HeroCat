@@ -24,3 +24,10 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 2be1f4eb4591eaa4d82f9493e7ca0f7e, type: 3}
     - {fileID: 8300000, guid: ffe88c4941fa76c46b24d9bff11de74e, type: 3}
   player: []
+  bgmSound:
+  - audioName: battleBgm
+    audioList:
+    - {fileID: 8300000, guid: 0236589dbb5c14a49b7a5af09efae4a1, type: 3}
+  - audioName: regularBgm
+    audioList:
+    - {fileID: 8300000, guid: ee0aa3f7b6c167448abebc4e4973d568, type: 3}

@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using NUnit.Framework.Internal.Builders;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -20,6 +21,7 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] private UI_TreeNode[] neededSkillNodes;
     [SerializeField] private UI_TreeNode[] conflictSkillNodes;
     [SerializeField] private bool isUnlocked = false;
+
 
     private void Awake()
     {
@@ -76,13 +78,24 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         // check skill conflict is unlocked or not
         if (ConflictSkillIsLocked() == false)
             return;
+        //check skill point is enough or not
+        if (SkillPointIsEnough(out int point) == false)
+            return;
 
         //unlock skill
         skillManager.GetSkillUnlockByType(skillData.skillType).SetUnlockByUpgradeType(skillData);
         isUnlocked = true;
         SkillUnlockedVisual();
+        skillManager.SetSkillPoint(point);
 
     }
+
+    private bool SkillPointIsEnough(out int point)
+    {
+        point = skillManager.GetSkillPoint() - skillData.skillPointToUnlock;
+
+        return skillManager.GetSkillPoint() >= skillData.skillPointToUnlock;
+    }    
 
     private bool NeededSkillIsUnlocked()
     {
