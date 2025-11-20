@@ -23,7 +23,10 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 9601a5a8b71ac0141bd8913b27344351, type: 3}
     - {fileID: 8300000, guid: 2be1f4eb4591eaa4d82f9493e7ca0f7e, type: 3}
     - {fileID: 8300000, guid: ffe88c4941fa76c46b24d9bff11de74e, type: 3}
-  player: []
+  player:
+  - audioName: dashSoundSfx
+    audioList:
+    - {fileID: 8300000, guid: 12746eda3a0a9a046903fffa4d075c44, type: 3}
   bgmSound:
   - audioName: battleBgm
     audioList:

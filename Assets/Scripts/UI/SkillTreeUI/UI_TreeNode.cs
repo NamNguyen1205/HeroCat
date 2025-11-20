@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using NUnit.Framework.Constraints;
 using NUnit.Framework.Internal.Builders;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -16,7 +17,7 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] private UI_SkillToolTip skillToolTip;
     private RectTransform treeNodeRect;
     private RectTransform toolTipRect;
-    private Player_SkillManager skillManager;
+    [SerializeField] private Player_SkillManager skillManager;
     [Header("Needed Skill")]
     [SerializeField] private UI_TreeNode[] neededSkillNodes;
     [SerializeField] private UI_TreeNode[] conflictSkillNodes;
@@ -28,8 +29,9 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         InitializeSkill();
         treeNodeRect = GetComponent<RectTransform>();
         toolTipRect = skillToolTip.GetComponent<RectTransform>();
-        skillManager = FindFirstObjectByType<Player_SkillManager>();
+        // skillManager = FindFirstObjectByType<Player_SkillManager>();
         isUnlocked = skillData.isUnlocked;
+        
     }
 
     private void InitializeSkill()
@@ -37,6 +39,12 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         this.skillName = skillData.skillName;
         this.skillDescription = skillData.skillDescription;
         this.skillIcon = skillData.skillIcon;
+    }
+
+    public void UnlockDefaultSkill()
+    {
+        if(skillData.unlockDefault == true)
+            skillManager.GetSkillUnlockByType(skillData.skillType).SetUnlockByUpgradeType(skillData);
     }
 
     private void Start()

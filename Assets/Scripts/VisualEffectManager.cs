@@ -32,8 +32,8 @@ public class VisualEffectManager : MonoBehaviour
     public void StartDashInAirEffect(Vector2 postion, bool isFacingRight)
     {
         GameObject dashEffect = Instantiate(dashInAirEffectPre, postion, quaternion.identity);
-        if(isFacingRight)
-            dashEffect.GetComponentInChildren<SpriteRenderer>().flipX = true;
+        if(isFacingRight == false)
+            dashEffect.transform.Rotate(0,180,0);
 
         Destroy(dashEffect, 1);
     }

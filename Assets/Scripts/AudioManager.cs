@@ -25,6 +25,7 @@ public class AudioManager : MonoBehaviour
     public void PlaySfx(AudioClip audioClip, AudioSource audioSource)
     {
         audioSource.PlayOneShot(audioClip);
+        
     }
 
     

@@ -147,19 +147,19 @@ TextureImporter:
       name: 18_Cat_Death-Sheet_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 4
-        width: 15
-        height: 21
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8b68d22086fcb0ab0800000000000000
+      spriteID: e115a154e844caf4e9d4ac3c006c80ef
       internalID: -5040707312291051848
       vertices: []
       indices: 
@@ -169,19 +169,19 @@ TextureImporter:
       name: 18_Cat_Death-Sheet_1
       rect:
         serializedVersion: 2
-        x: 39
-        y: 4
-        width: 15
-        height: 21
+        x: 32
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0c66b99a1b3f375b0800000000000000
+      spriteID: 5ac6c42e9cb06464dae74221a7a3a8cd
       internalID: -5371681986142574912
       vertices: []
       indices: 
@@ -191,19 +191,19 @@ TextureImporter:
       name: 18_Cat_Death-Sheet_2
       rect:
         serializedVersion: 2
-        x: 71
-        y: 4
-        width: 15
-        height: 21
+        x: 64
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: eb997634f555d41c0800000000000000
+      spriteID: b5ba026c5cc4dd349acd8d400cdbbf0c
       internalID: -4517860983541622338
       vertices: []
       indices: 
@@ -213,19 +213,19 @@ TextureImporter:
       name: 18_Cat_Death-Sheet_3
       rect:
         serializedVersion: 2
-        x: 103
-        y: 4
-        width: 15
-        height: 21
+        x: 96
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d7299b642db155420800000000000000
+      spriteID: 43d8293b3725cc444862ea96091da028
       internalID: 2618029348329460349
       vertices: []
       indices: 
@@ -235,19 +235,19 @@ TextureImporter:
       name: 18_Cat_Death-Sheet_4
       rect:
         serializedVersion: 2
-        x: 134
-        y: 1
-        width: 21
-        height: 24
+        x: 128
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 418597ce2f823aa90800000000000000
+      spriteID: 83cbb38f9fc8a8d4bb1e8d4adbd948b1
       internalID: -7303949146850240492
       vertices: []
       indices: 
@@ -257,19 +257,19 @@ TextureImporter:
       name: 18_Cat_Death-Sheet_5
       rect:
         serializedVersion: 2
-        x: 166
-        y: 1
-        width: 21
-        height: 24
+        x: 160
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4e7c0a05b48e48420800000000000000
+      spriteID: 5ebc04559dab328469e06506ec24dce2
       internalID: 2631483492464117732
       vertices: []
       indices: 
@@ -279,20 +279,64 @@ TextureImporter:
       name: 18_Cat_Death-Sheet_6
       rect:
         serializedVersion: 2
-        x: 198
+        x: 192
         y: 0
-        width: 55
-        height: 25
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a6e3b6478baf9b44b1e47ec1e56357c
+      internalID: -7994981479249950441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 18_Cat_Death-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b31fcb1a6cd055142bf594ae431834e9
+      internalID: 1849047007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 18_Cat_Death-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 719ca7f24be1c0190800000000000000
-      internalID: -7994981479249950441
+      spriteID: 3045262947ee4fc408aae32d3ab5f7de
+      internalID: -896895640
       vertices: []
       indices: 
       edges: []
@@ -301,7 +345,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: cd342174c211a5641ac2be64fdf6b8d2
     internalID: 0
     vertices: []
     indices: 
@@ -318,6 +362,8 @@ TextureImporter:
       18_Cat_Death-Sheet_4: -7303949146850240492
       18_Cat_Death-Sheet_5: 2631483492464117732
       18_Cat_Death-Sheet_6: -7994981479249950441
+      18_Cat_Death-Sheet_7: 1849047007
+      18_Cat_Death-Sheet_8: -896895640
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

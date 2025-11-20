@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Player_Entity : Entity
 {
+    private UI ui;
     public PlayerInputControll input { get; private set; }
 
     public Player_IdleState idleState { get; private set; }
@@ -19,6 +20,8 @@ public class Player_Entity : Entity
     public Player_JumpAttackState jumpAttackState { get; private set; }
     public Player_AimState aimState { get; private set; }
     //public Player_RangeAttackState rangeAttackState { get; private set; }
+
+    public Player_SoundSfx player_SoundSfx {get; private set; }
 
 
     public Vector2 movement { get; private set; }
@@ -61,6 +64,8 @@ public class Player_Entity : Entity
         jumpAttackState = new Player_JumpAttackState(this, stateMachine, "jumpAttack");
         aimState = new Player_AimState(this, stateMachine, "aim");
         //rangeAttackState = new Player_RangeAttackState(this, stateMachine, "rangeAttack");
+        player_SoundSfx = GetComponent<Player_SoundSfx>();
+        ui = FindFirstObjectByType<UI>();
     }
 
     private void OnEnable()
@@ -81,5 +86,9 @@ public class Player_Entity : Entity
         stateMachine.Initialize(idleState);
     }
 
-
+    public override void EntityDeath()
+    {
+        anim.SetTrigger("death");
+        Time.timeScale = 0;
+    }
 }

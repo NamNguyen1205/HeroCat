@@ -77,7 +77,7 @@ public class Entity : MonoBehaviour
 
     public virtual void EntityDeath()
     {
-
+        
     }
 
     public void PerformKnockBack(Vector2 knockbackPower, float knockbackDuration)

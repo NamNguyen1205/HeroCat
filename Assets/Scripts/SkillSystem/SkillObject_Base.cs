@@ -24,7 +24,6 @@ public class SkillObject_Base : MonoBehaviour
     {
         foreach(var target in CheckEnemiesAround(t))
         {
-            Debug.Log("damage enemy");
             IDamageable damageable = target.GetComponent<IDamageable>();
 
             //tính toán damage từ player stat

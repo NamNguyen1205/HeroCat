@@ -11,6 +11,7 @@ public class Skill_Base : MonoBehaviour
     protected virtual void Awake()
     {
         lastTimeUsed = lastTimeUsed - cooldown;
+        
     }
 
     //skill cooldown

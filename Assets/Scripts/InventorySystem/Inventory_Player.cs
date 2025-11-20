@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Inventory_Player : Inventory_Base
 {
+    public float gold;
     public event Action onEquipSlotChange;
     public List<Inventory_EquipmentSlot> equipList;
 
@@ -63,7 +64,17 @@ public class Inventory_Player : Inventory_Base
         //remove item modifiers
         itemToUnequip.RemoveItemModifierFromStat(playerStat);
         entityHealth.UpdateCurrentHealth();
-    }    
-    
-    
+    }
+
+    public override void SaveData(ref GameData gameData)
+    {
+        gameData.gold = this.gold;
+        gameData.itemList = this.itemList;
+    }
+
+    public override void LoadData(GameData gameData)
+    {
+        this.gold = gameData.gold;
+        this.itemList = gameData.itemList;
+    }
 }

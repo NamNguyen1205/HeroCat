@@ -1,3 +1,5 @@
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UI_Inventory : MonoBehaviour
@@ -5,6 +7,7 @@ public class UI_Inventory : MonoBehaviour
     private Inventory_Player inventoryPlayer;
     [SerializeField] private UI_ItemSlotParent itemSlotParent;
     [SerializeField] private UI_EquipSlotParent equipSlotParent;
+    [SerializeField] private TextMeshProUGUI gold;
 
     private void Awake()
     {
@@ -13,6 +16,7 @@ public class UI_Inventory : MonoBehaviour
         inventoryPlayer.OnInventoryChanged += UpdateUIInventory;
         inventoryPlayer.onEquipSlotChange += UpdateUIEquipSlot;
 
+        UpdateGold();
         UpdateUIInventory();
         UpdateUIEquipSlot();
     }
@@ -27,4 +31,6 @@ public class UI_Inventory : MonoBehaviour
     {
         equipSlotParent.UpDateUIEquipSlots(inventoryPlayer.equipList);
     }
+
+    private void UpdateGold() => gold.text = inventoryPlayer.gold.ToString();
 }

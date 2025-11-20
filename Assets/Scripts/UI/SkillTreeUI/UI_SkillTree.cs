@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class UI_SkillTree : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public UI_TreeNode[] allTreeNodes {get; private set; }
+
+    private void Awake()
     {
-        
+        // allTreeNodes = GetComponentsInChildren<UI_TreeNode>(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void InitSkillTree()
     {
-        
+        allTreeNodes = GetComponentsInChildren<UI_TreeNode>(true);
+
+        foreach(var treeNode in allTreeNodes)
+        {
+            treeNode.UnlockDefaultSkill();
+        }
     }
 }

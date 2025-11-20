@@ -26,6 +26,9 @@ public class PlayerState : EntityState
 
         if (player.input.Player.Dash.WasPressedThisFrame() && !skillManager.skill_Dash.OnCooldown())
         {
+            //sound effect
+            player.player_SoundSfx.PlayDashSfx();
+            
             if (stateMachine.currentState == player.wallSlideState)
                 player.Flip();
             
@@ -37,6 +40,10 @@ public class PlayerState : EntityState
             //use visual effect
             if(stateMachine.currentState is Player_GroundedState)
                 VisualEffectManager.instance.StartDashEffect(player.transform.position, player.isFacingRight);
+            
+            if(stateMachine.currentState is Player_InAirState || stateMachine.currentState is Player_WallSlideState)
+                VisualEffectManager.instance.StartDashInAirEffect(player.transform.position, player.isFacingRight);
+            
             stateMachine.ChangeState(player.dashState);
         }
 

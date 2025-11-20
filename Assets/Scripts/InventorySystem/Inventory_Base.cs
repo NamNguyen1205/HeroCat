@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Inventory_Base : MonoBehaviour
+public class Inventory_Base : MonoBehaviour, ISaveable
 {
     public event Action OnInventoryChanged;
     protected Player_Stat playerStat;
@@ -78,5 +78,15 @@ public class Inventory_Base : MonoBehaviour
         itemList.Remove(itemToRemove);
 
         OnInventoryChanged?.Invoke();
+    }
+
+    public virtual void SaveData(ref GameData gameData)
+    {
+        
+    }
+
+    public virtual void LoadData(GameData gameData)
+    {
+        
     }
 }
